@@ -18,7 +18,7 @@ SELECT * FROM `ospiti` WHERE name LIKE  'D%';
 
 5. Calcolare il totale degli ospiti paganti
 
-SELECT SUM(price) FROM pagamenti WHERE `status` LIKE 'accepted';
+SELECT COUNT(*) from `paganti` WHERE `ospite_id` IS NOT NULL;
 
 6.  Qual è il prezzo massimo pagato?
 
