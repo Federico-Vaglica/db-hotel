@@ -34,5 +34,32 @@ SELECT * FROM `ospiti` WHERE `document_type` LIKE 'Driver License' AND YEAR (`da
 
 SELECT SUM(`beds`) FROM  `stanze`;
 
+9. Conta gli ospiti ragruppandoli per anno di nascita
+
+SELECT YEAR(`date_of_bhirt`) COUNT(`id`) FROM `ospiti` GROUP BY YEAR(`date_of_birth`)
+
+10. Somma i prezzi dei pagamenti raggrupandoli per status.
+
+SELECT `status` COUNT(`price`) FROM (`pagamenti`) GROUP BY `status`
+
+11 Conta quante volte e' stata prenotata ogni stanza.
+
+SELECT stanze.room_number COUNT (prenotazioni.id) FROM `prenotazioni` JOIN `stanze` ON prenotazioni.stanza_id = stanza.id GROUP BY stanze.room_number
+
+12. Stampa tutti gli ospiti pe ogni prenotazione
+
+SELECT prenotazioni_has_ospiti.prenotazioni.id,ospiti.lastname,ospiti.name FROM `prenotazioni_has_ospiti` JOIN `ospiti` ON prenotazioni_has_ospiti.ospiti_id = ospiti_id
+
+13 Stampare nome , cognome, prezzo e pagante per tutte le prenotazioni fatte a maggio 2018
+
+
+
+14.Fai la somma di tutti i prezzi delle prenotazioni delle stanze del primo piano
+
+SELECT stanze.floor SUM(pagamenti.price) FROM `prenotazioni` JOIN `pagamenti` ON pagamenti.prenotazioni_id = prenotazioni.id JOIN `stanze` ON stanze.id = prenotazioni.stanze_id 
+
+15.  Prendi i dati di fatturazione per la prenotazione con id=7
+
+
 
 
