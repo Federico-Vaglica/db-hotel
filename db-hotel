@@ -52,13 +52,15 @@ SELECT prenotazioni_has_ospiti.prenotazioni.id,ospiti.lastname,ospiti.name FROM 
 
 13 Stampare nome , cognome, prezzo e pagante per tutte le prenotazioni fatte a maggio 2018
 
-
+SELECT ospiti.lastname, ospiti.name, pagamenti.price, paganti.name, paganti.lastname, prenotazioni.created_at, pagamenti.status FROM `ospiti` INNER JOIN `prenotazioni_has_ospiti` ON ospiti.id = prenotazioni_has_ospiti.ospite_id  INNER JOIN `prenotazioni` ON prenotazioni.id = prenotazioni_has_ospiti.prenotazione_id INNER JOIN `pagamenti` ON pagamenti.prenotazione_id = prenotazioni.id INNER JOIN `paganti` ON paganti.id = pagamenti.pagante_id WHERE prenotazioni.created_at BETWEEN '2018-05-01' AND '2018-05-31';
 
 14.Fai la somma di tutti i prezzi delle prenotazioni delle stanze del primo piano
 
 SELECT stanze.floor SUM(pagamenti.price) FROM `prenotazioni` JOIN `pagamenti` ON pagamenti.prenotazioni_id = prenotazioni.id JOIN `stanze` ON stanze.id = prenotazioni.stanze_id 
 
 15.  Prendi i dati di fatturazione per la prenotazione con id=7
+
+SELECT paganti.lastname, paganti.name, paganti.price, pagamenti.address FROM `prenotazioni` INNER JOIN `pagamenti` ON prenotazioni.id = pagamenti.prenotazione_id INNER JOIN `paganti` ON paganti.id = pagamenti.pagante_id  WHERE prenotazioni.id = 7;
 
 
 
