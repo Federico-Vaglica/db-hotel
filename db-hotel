@@ -54,7 +54,7 @@ SELECT prenotazioni_has_ospiti.prenotazioni.id,ospiti.lastname,ospiti.name FROM 
 
 SELECT ospiti.lastname, ospiti.name, pagamenti.price, paganti.name, paganti.lastname, prenotazioni.created_at, pagamenti.status FROM `ospiti` INNER JOIN `prenotazioni_has_ospiti` ON ospiti.id = prenotazioni_has_ospiti.ospite_id  INNER JOIN `prenotazioni` ON prenotazioni.id = prenotazioni_has_ospiti.prenotazione_id INNER JOIN `pagamenti` ON pagamenti.prenotazione_id = prenotazioni.id INNER JOIN `paganti` ON paganti.id = pagamenti.pagante_id WHERE prenotazioni.created_at BETWEEN '2018-05-01' AND '2018-05-31';
 
-14.Fai la somma di tutti i prezzi delle prenotazioni delle stanze del primo piano
+14.Fai la somma di tutti i prezzi delle prenotazioni   delle stanze del primo piano
 
 SELECT stanze.floor SUM(pagamenti.price) FROM `prenotazioni` JOIN `pagamenti` ON pagamenti.prenotazioni_id = prenotazioni.id JOIN `stanze` ON stanze.id = prenotazioni.stanze_id 
 
